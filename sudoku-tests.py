@@ -1,4 +1,8 @@
 """
+    Author          : Sanal Kumar (sanaltsk@gmail.com)
+    Submission Date : 23 October 5:46PM (IST)
+    Submission for Insight Data Engineering Coding Challenge
+
     This is a program to verify the functionality of sudoku.py
 
     input: csv file containing the sudoku unsolved matrix, whereever the values are blank or to
@@ -11,6 +15,7 @@
                 One entering a file name, the verification of sudoku.py is performed on the
                 newly entered csv file
 """
+
 from sudoku import main,getColumnNumbers
 import unittest
 

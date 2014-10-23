@@ -1,4 +1,8 @@
 """
+    Author          : Sanal Kumar (sanaltsk@gmail.com)
+    Submission Date : 23 October 5:46PM (IST)
+    Submission for Insight Data Engineering Coding Challenge
+
     This is a program to solve inputed sudoku matrix.
     Input : csv file containing the sudoku unsolved matrix, whereever the values are blank or to
             be computed replace them with 0. Each value is seperated by commas and structured
