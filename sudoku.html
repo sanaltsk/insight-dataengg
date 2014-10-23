@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sudoku</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sudoku</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/san/Desktop/insight/sudoku.py">/Users/san/Desktop/insight/sudoku.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;is&nbsp;a&nbsp;program&nbsp;to&nbsp;solve&nbsp;inputed&nbsp;sudoku&nbsp;matrix.<br>
+Input&nbsp;:&nbsp;csv&nbsp;file&nbsp;containing&nbsp;the&nbsp;sudoku&nbsp;unsolved&nbsp;matrix,&nbsp;whereever&nbsp;the&nbsp;values&nbsp;are&nbsp;blank&nbsp;or&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;computed&nbsp;replace&nbsp;them&nbsp;with&nbsp;0.&nbsp;Each&nbsp;value&nbsp;is&nbsp;seperated&nbsp;by&nbsp;commas&nbsp;and&nbsp;structured<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into&nbsp;9x9&nbsp;matrix.<br>
+Output:&nbsp;Displays&nbsp;the&nbsp;solved&nbsp;sudoku&nbsp;matrix.&nbsp;The&nbsp;red&nbsp;values&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;computed&nbsp;values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;green&nbsp;values&nbsp;are&nbsp;the&nbsp;values&nbsp;suppiled&nbsp;in&nbsp;through&nbsp;the&nbsp;input.&nbsp;Output&nbsp;solved&nbsp;sudoku<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;written&nbsp;to&nbsp;a&nbsp;file&nbsp;&lt;&lt;input-csv-filename&gt;&gt;_output.csv.<br>
+&nbsp;<br>
+Execution&nbsp;:&nbsp;python&nbsp;sudoku.py&nbsp;&lt;&lt;csv-filename&gt;&gt;<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;sudoku.py&nbsp;data.csv<br>
+&nbsp;<br>
+Sample&nbsp;Data:&nbsp;Six&nbsp;sample&nbsp;datasets&nbsp;are&nbsp;available(data1,data2...6)&nbsp;these&nbsp;sample&nbsp;sudoku&nbsp;matrices&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;varying&nbsp;difficulty&nbsp;levels&nbsp;(taken&nbsp;from&nbsp;the&nbsp;internet)</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="csv.html">csv</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-findNextBlankLocation"><strong>findNextBlankLocation</strong></a>(matrix, row, col)</dt><dd><tt>This&nbsp;function&nbsp;searches&nbsp;for&nbsp;the&nbsp;next&nbsp;blank&nbsp;or&nbsp;0&nbsp;spot&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+:param&nbsp;row:&nbsp;the&nbsp;current&nbsp;row&nbsp;coordinate<br>
+:param&nbsp;col:&nbsp;the&nbsp;current&nbsp;column&nbsp;coordinate<br>
+:returns:&nbsp;True,r,c&nbsp;where&nbsp;True&nbsp;is&nbsp;for&nbsp;successfully&nbsp;finding&nbsp;a&nbsp;blank&nbsp;spot&nbsp;or&nbsp;0&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r,c&nbsp;are&nbsp;row&nbsp;and&nbsp;column&nbsp;for&nbsp;the&nbsp;blank&nbsp;spot<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False,r,c&nbsp;where&nbsp;False&nbsp;if&nbsp;it&nbsp;could&nbsp;not&nbsp;find&nbsp;any&nbsp;blank&nbsp;spot&nbsp;or&nbsp;0&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r,c&nbsp;are&nbsp;the&nbsp;last&nbsp;values&nbsp;of&nbsp;row&nbsp;and&nbsp;column&nbsp;searched</tt></dd></dl>
+ <dl><dt><a name="-getColumnNumbers"><strong>getColumnNumbers</strong></a>(matrix, col)</dt><dd><tt>This&nbsp;function&nbsp;returns&nbsp;the&nbsp;list&nbsp;of&nbsp;column&nbsp;elements&nbsp;of&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp;based<br>
+col&nbsp;value.&nbsp;if&nbsp;col&nbsp;is&nbsp;0,it&nbsp;returns&nbsp;the&nbsp;first&nbsp;column.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+:param&nbsp;col:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;column&nbsp;coordinate&nbsp;whose&nbsp;column&nbsp;is&nbsp;to&nbsp;be&nbsp;fetched<br>
+:return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;column&nbsp;elements</tt></dd></dl>
+ <dl><dt><a name="-isNumberUsedInBox"><strong>isNumberUsedInBox</strong></a>(matrix, boxStartRow, boxStartCol, num)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;helper&nbsp;function&nbsp;to&nbsp;isSafe&nbsp;function&nbsp;above.&nbsp;The&nbsp;function&nbsp;checks&nbsp;for&nbsp;the&nbsp;presence<br>
+of&nbsp;the&nbsp;num&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp;small&nbsp;boxes&nbsp;(3x3&nbsp;matrix).<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;unsolved&nbsp;sudoku&nbsp;matrix<br>
+:param&nbsp;boxStartRow:&nbsp;starting&nbsp;row&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;box(3x3&nbsp;matrix)<br>
+:param&nbsp;boxStartCol:&nbsp;starting&nbsp;column&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;box(3x3&nbsp;matrix)<br>
+:param&nbsp;num:&nbsp;The&nbsp;propesed&nbsp;number&nbsp;to&nbsp;be&nbsp;replaced&nbsp;in&nbsp;the&nbsp;blank&nbsp;space<br>
+:return:&nbsp;True&nbsp;if&nbsp;num&nbsp;is&nbsp;present&nbsp;in&nbsp;the&nbsp;small&nbsp;box(3x3&nbsp;matrix)&nbsp;of&nbsp;the&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;if&nbsp;num&nbsp;is&nbsp;not&nbsp;present&nbsp;in&nbsp;the&nbsp;inputted&nbsp;small&nbsp;box(3x3&nbsp;matrix)</tt></dd></dl>
+ <dl><dt><a name="-isNumberUsedInColumn"><strong>isNumberUsedInColumn</strong></a>(matrix, col, num)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;helper&nbsp;function&nbsp;to&nbsp;isSafe&nbsp;function&nbsp;above.&nbsp;The&nbsp;function&nbsp;checks&nbsp;for&nbsp;the&nbsp;presence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;num&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp;columns.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+:param&nbsp;col:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;column&nbsp;coordinate&nbsp;where&nbsp;the&nbsp;0&nbsp;is&nbsp;to&nbsp;be&nbsp;replaced&nbsp;by&nbsp;num<br>
+:param&nbsp;num:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;that&nbsp;is&nbsp;being&nbsp;replaced&nbsp;at&nbsp;0<br>
+:return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;num&nbsp;is&nbsp;present&nbsp;in&nbsp;the&nbsp;column&nbsp;of&nbsp;the&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;if&nbsp;num&nbsp;is&nbsp;not&nbsp;present&nbsp;in&nbsp;the&nbsp;inputted&nbsp;column</tt></dd></dl>
+ <dl><dt><a name="-isNumberUsedInRow"><strong>isNumberUsedInRow</strong></a>(matrix, row, num)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;helper&nbsp;function&nbsp;to&nbsp;isSafe&nbsp;function&nbsp;above.&nbsp;The&nbsp;function&nbsp;checks&nbsp;for&nbsp;the&nbsp;presence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;num&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp;rows.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;&nbsp;unsolved&nbsp;sudoku&nbsp;matrix<br>
+:param&nbsp;row:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;row&nbsp;coordinate&nbsp;where&nbsp;the&nbsp;0&nbsp;is&nbsp;to&nbsp;be&nbsp;replaced&nbsp;by&nbsp;num<br>
+:param&nbsp;num:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;that&nbsp;is&nbsp;being&nbsp;replaced&nbsp;at&nbsp;0<br>
+:return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;num&nbsp;is&nbsp;present&nbsp;in&nbsp;the&nbsp;row&nbsp;of&nbsp;the&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;if&nbsp;num&nbsp;is&nbsp;not&nbsp;present&nbsp;in&nbsp;the&nbsp;inputted&nbsp;row</tt></dd></dl>
+ <dl><dt><a name="-isSafe"><strong>isSafe</strong></a>(matrix, row, col, num)</dt><dd><tt>This&nbsp;function&nbsp;checks&nbsp;if&nbsp;its&nbsp;safe&nbsp;to&nbsp;populate&nbsp;a&nbsp;number,&nbsp;by&nbsp;verifying&nbsp;for&nbsp;any&nbsp;conflicts&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;row,column&nbsp;and&nbsp;box&nbsp;level&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;row&nbsp;and&nbsp;col&nbsp;inputted.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;unsolved&nbsp;sudoku&nbsp;matrix<br>
+:param&nbsp;row:&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;row&nbsp;coordinate&nbsp;where&nbsp;the&nbsp;0&nbsp;is&nbsp;to&nbsp;be&nbsp;replaced&nbsp;by&nbsp;num<br>
+:param&nbsp;col:&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;column&nbsp;coordinate&nbsp;where&nbsp;the&nbsp;0&nbsp;is&nbsp;to&nbsp;be&nbsp;replaced&nbsp;by&nbsp;num<br>
+:param&nbsp;num:&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;that&nbsp;is&nbsp;being&nbsp;replaced&nbsp;at&nbsp;0<br>
+:return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True,&nbsp;if&nbsp;the&nbsp;unsolved&nbsp;matrix&nbsp;can&nbsp;accommodate&nbsp;the&nbsp;new&nbsp;number&nbsp;without&nbsp;any&nbsp;coflicts&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row,column&nbsp;or&nbsp;box&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False,&nbsp;if&nbsp;the&nbsp;new&nbsp;number&nbsp;is&nbsp;already&nbsp;present&nbsp;in&nbsp;row,column&nbsp;or&nbsp;box&nbsp;levels</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(inputfile, outputfile)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;main&nbsp;driver&nbsp;function<br>
+:param&nbsp;file:&nbsp;csv&nbsp;file-name<br>
+:return&nbsp;:&nbsp;sudoku&nbsp;matrix</tt></dd></dl>
+ <dl><dt><a name="-printMatrix"><strong>printMatrix</strong></a>(matrix)</dt><dd><tt>This&nbsp;function&nbsp;prints&nbsp;out&nbsp;the&nbsp;inputted&nbsp;sudoku&nbsp;matrix,&nbsp;the&nbsp;solved&nbsp;values&nbsp;are&nbsp;print&nbsp;in&nbsp;red<br>
+and&nbsp;the&nbsp;values&nbsp;which&nbsp;were&nbsp;present&nbsp;in&nbsp;the&nbsp;unsolved&nbsp;sudoku&nbsp;matrix&nbsp;are&nbsp;print&nbsp;in&nbsp;green<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;sudoku&nbsp;matrix</tt></dd></dl>
+ <dl><dt><a name="-readCSV"><strong>readCSV</strong></a>(file)</dt><dd><tt>Function&nbsp;reads&nbsp;the&nbsp;inputted&nbsp;csv&nbsp;file&nbsp;to&nbsp;list<br>
+:param&nbsp;file:&nbsp;csv-filename<br>
+:return:&nbsp;returns&nbsp;the&nbsp;sudoku&nbsp;matrix&nbsp;read&nbsp;from&nbsp;the&nbsp;csv&nbsp;file</tt></dd></dl>
+ <dl><dt><a name="-solveSudokuMatrix"><strong>solveSudokuMatrix</strong></a>(matrix)</dt><dd><tt>This&nbsp;function&nbsp;searches&nbsp;for&nbsp;each&nbsp;0&nbsp;entry&nbsp;in&nbsp;the&nbsp;matrix(Blank&nbsp;element&nbsp;in&nbsp;sudoku)&nbsp;and<br>
+iterates&nbsp;through&nbsp;1&nbsp;to&nbsp;9&nbsp;values&nbsp;for&nbsp;deducing&nbsp;the&nbsp;best&nbsp;match&nbsp;at&nbsp;the&nbsp;particular&nbsp;location.<br>
+&nbsp;<br>
+If&nbsp;a&nbsp;suitable&nbsp;value&nbsp;is&nbsp;matched&nbsp;the&nbsp;same&nbsp;function&nbsp;is&nbsp;recursively&nbsp;called&nbsp;with&nbsp;the&nbsp;updated&nbsp;value<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;sudoku&nbsp;unsolved&nbsp;matrix<br>
+:return:&nbsp;returns&nbsp;True&nbsp;if&nbsp;sudoku&nbsp;is&nbsp;successfully&nbsp;solved&nbsp;and&nbsp;False&nbsp;if&nbsp;not</tt></dd></dl>
+ <dl><dt><a name="-writeCSV"><strong>writeCSV</strong></a>(matrix, file)</dt><dd><tt>Function&nbsp;writes&nbsp;the&nbsp;solved&nbsp;sudoku&nbsp;matrix&nbsp;to&nbsp;csv&nbsp;file<br>
+:param&nbsp;matrix:&nbsp;solved&nbsp;sudoku&nbsp;matrix<br>
+:param&nbsp;file:&nbsp;output&nbsp;csv-filename</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>indexList</strong> = []</td></tr></table>
+</body></html>
