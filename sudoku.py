@@ -102,10 +102,6 @@ def findNextBlankLocation(matrix,row,col):
             if matrix[r][c]==0:
                 indexList.append([r,c])
                 return True,r,c
-        # if 0 in matrix[r]:
-        #     c=matrix[r].index(0)
-        #     indexList.append([r,c])
-        #     return True,r,c
     return False,r,c
 
 def isSafe(matrix,row,col,num):
