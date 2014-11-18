@@ -1,11 +1,13 @@
 Projects
 
-1. SimpleCV Applications - Simple Python Computer Vision code snippets for intrusion detection
-							 and helping blind to cross the road through zebra crossing 
-							 sample implementations.
+1. SimpleCV Applications
 
-9. TicketDate 			 - Simple tool to calculate the Indian Railways Ticket Booking date
-							 and adding it to various calendar apps like ical,Google
-							Calendar, Outlook etc,.
+Simple Python Computer Vision code snippets for intrusion detection and helping blind 
+to cross the road through zebra crossing sample implementations.
+
+9. TicketDate 			
+
+Simple tool to calculate the Indian Railways Ticket Booking date and adding it to various 
+calendar apps like ical,Google Calendar, Outlook etc,.
 
 
